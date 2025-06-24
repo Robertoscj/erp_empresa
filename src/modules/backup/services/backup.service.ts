@@ -239,7 +239,7 @@ export class BackupService {
   private extractDateFromFileName(fileName: string): Date | null {
     try {
       const match = fileName.match(/backup-.*-(\d{4}-\d{2}-\d{2}T\d{2}-\d{2}-\d{2}-\d{3}Z)\.sql/);
-      if (match) {
+      if (match && match[1]) {
         const dateStr = match[1].replace(/-/g, ':').replace('T', ' ').replace('Z', '');
         return new Date(dateStr);
       }
